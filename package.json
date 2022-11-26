@@ -2,10 +2,10 @@
   "name": "1vaja",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "project/index.js",
   "type": "module",
   "scripts": {
-    "__start": "nodemon project/index.js"
+    "start": "node project/index.js"
   },
   "keywords": [],
   "author": "",
