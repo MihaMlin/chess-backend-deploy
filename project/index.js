@@ -8,8 +8,8 @@ const PORT = 5000;
 
 app.use(bodyParser.json());
 
-app.use('https://chess-rpo.herokuapp.com/users', usersRoutes);
+app.use('/users', usersRoutes);
 
-app.get('https://chess-rpo.herokuapp.com/', (req, res) => res.send('Hello from homepage'));
+app.get('/', (req, res) => res.send('Hello from homepage'));
 
-app.listen(PORT, () => console.log(`Server running on port: https://chess-rpo.herokuapp.com/`));
+app.listen(PORT, () => console.log(`Server running on port: http://localhost:${PORT}`));
