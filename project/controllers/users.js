@@ -3,17 +3,38 @@ import { createConnection } from 'mysql';
 import bcrypt, { hash } from 'bcrypt';
 //import { send_registration_mail } from '../mail.js';
 
-var connection = createConnection({
+var db_config = {
   host: "eu-cdbr-west-03.cleardb.net",
   user: "b5aa4f76b3727d",
   password: "90067d9d",
   database: "heroku_12f139320673849"
-});
+};
 
-connection.connect((err) => {
-  if (err) throw err;
-  console.log("Connected to the Database")
-});
+var connection = createConnection(db_config);
+
+function handleDisconect() {
+  connection = createConnection(db_config);
+
+  connection.connect((err) => {
+    if (err) {
+      console.log("Error while connecting to the database:", err);
+      setTimeout(handleDisconect, 2000);
+    }
+    console.log("Connected to the Database")
+  });
+
+  connection.on("error", (err) => {
+    console.log("database error", err);
+    if (err.code === "PROTOCOL_CONNECTION_LOST") {
+      handleDisconect();
+    }
+    else {
+      throw err;
+    }
+  });
+};
+
+handleDisconect();
 
 export const getUsers = (req, res) => {
   connection.query("SELECT * FROM chess_user", (err, result, fields) => {
