@@ -4,10 +4,10 @@ import bcrypt, { hash } from 'bcrypt';
 //import { send_registration_mail } from '../mail.js';
 
 var connection = createConnection({
-  host: "localhost",
-  user: "root",
-  //password: "root"
-  database: "chess_RPO_2022"
+  host: "eu-cdbr-west-03.cleardb.net",
+  user: "b5aa4f76b3727d",
+  password: "90067d9d",
+  database: "heroku_12f139320673849"
 });
 
 connection.connect((err) => {
