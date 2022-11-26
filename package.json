@@ -5,7 +5,7 @@
   "main": "project/index.js",
   "type": "module",
   "scripts": {
-    "start": "node project/index.js"
+    "start": "nodemon project/index.js"
   },
   "keywords": [],
   "author": "",
